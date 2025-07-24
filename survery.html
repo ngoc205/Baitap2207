@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Khảo sát khách hàng</title>
+</head>
+<body>
+
+  <h2>Khảo sát ý kiến khách hàng</h2>
+
+  <form action="" method="post">
+    
+    <label for="name">Họ và tên:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label>Giới tính:</label><br>
+    <input type="radio" id="male" name="gender" value="Nam" required>
+    <label for="male">Nam</label><br>
+    <input type="radio" id="female" name="gender" value="Nữ">
+    <label for="female">Nữ</label><br>
+    <input type="radio" id="other" name="gender" value="Khác">
+    <label for="other">Khác</label><br><br>
+
+    <label>1. Bạn biết đến dịch vụ của chúng tôi từ đâu?</label><br>
+    <select name="source" required>
+      <option value="">-- Chọn một mục --</option>
+      <option value="facebook">Facebook</option>
+      <option value="google">Google</option>
+      <option value="ban_be">Bạn bè giới thiệu</option>
+      <option value="khac">Khác</option>
+    </select><br><br>
+
+    <label>2. Mức độ hài lòng của bạn với dịch vụ?</label><br>
+    <input type="radio" name="satisfaction" value="Rất hài lòng" required> Rất hài lòng<br>
+    <input type="radio" name="satisfaction" value="Hài lòng"> Hài lòng<br>
+    <input type="radio" name="satisfaction" value="Bình thường"> Bình thường<br>
+    <input type="radio" name="satisfaction" value="Không hài lòng"> Không hài lòng<br>
+    <input type="radio" name="satisfaction" value="Tệ"> Tệ<br><br>
+
+
+    <label for="comment">3. Góp ý hoặc đề xuất thêm (nếu có):</label><br>
+    <textarea id="comment" name="comment" rows="5" cols="40"></textarea><br><br>
+
+    <input type="submit" value="Gửi khảo sát">
+
+  </form>
+
+</body>
+</html>

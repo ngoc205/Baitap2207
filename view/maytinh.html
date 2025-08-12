@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Máy tính đơn giản</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .buttons {
+  display: flex;
+   font-size: 30px;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <h2>Máy tính của Ngọc</h2>
+
+  <input type="number" id="num1" placeholder="Số 1">
+  <input type="number" id="num2" placeholder="Số 2">
+  <br>
+    <div class="buttons">
+  <button onclick="tinh('+')">+</button>
+  <button onclick="tinh('-')">-</button>
+  <button onclick="tinh('*')">*</button>
+  <button onclick="tinh('/')">/</button>
+</div>
+  <div id="result"></div>
+</div>
+
+<script>
+  function tinh(phepTinh) {
+    const so1 = parseFloat(document.getElementById("num1").value);
+    const so2 = parseFloat(document.getElementById("num2").value);
+    let ketQua;
+
+    if (isNaN(so1) || isNaN(so2)) {
+      document.getElementById("result").innerText = "Vui lòng nhập đầy đủ 2 số.";
+      return;
+    }
+
+    switch (phepTinh) {
+      case '+':
+        ketQua = so1 + so2;
+        break;
+      case '-':
+        ketQua = so1 - so2;
+        break;
+      case '*':
+        ketQua = so1 * so2;
+        break;
+      case '/':
+        if (so2 === 0) {
+          document.getElementById("result").innerText = "Không thể chia cho 0.";
+          return;
+        }
+        ketQua = so1 / so2;
+        break;
+    }
+
+    document.getElementById("result").innerText = "Kết quả: " + ketQua;
+  }
+</script>
+
+</body>
+</html>

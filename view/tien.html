@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ứng dụng chuyển đổi tiền tệ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="converter">
+  <h2>Chuyển đổi tiền tệ</h2>
+
+  <label for="amount">Số tiền:</label>
+  <input type="number" id="amount" placeholder="Nhập số tiền">
+
+  <label for="from">Từ:</label>
+  <select id="from">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+  </select>
+
+  <label for="to">Sang:</label>
+  <select id="to">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+  </select>
+
+  <button onclick="convertCurrency()">Chuyển đổi</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  const rates = {
+    VND: {
+      USD: 0.000042, 
+      EUR: 0.000038, 
+      VND: 1
+    },
+    USD: {
+      VND: 25000,   
+      EUR: 0.9,
+      USD: 1
+    },
+    EUR: {
+      VND: 27000,   
+      USD: 1.1,
+      EUR: 1
+    }
+  };
+
+  function convertCurrency() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+
+    if (isNaN(amount) || amount <= 0) {
+      document.getElementById("result").textContent = "Vui lòng nhập số tiền hợp lệ.";
+      return;
+    }
+
+    const rate = rates[from][to];
+    const converted = amount * rate;
+
+    document.getElementById("result").textContent = 
+      `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
+  }
+</script>
+
+</body>
+</html>

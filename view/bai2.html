@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra điều kiện học lớp 10</title>
+</head>
+<body>
+    <h2>Kiểm tra điều kiện học lớp 10</h2>
+
+    <label for="tuoi">Nhập tuổi của học sinh: </label>
+    <input type="number" id="tuoi" placeholder="Nhập tuổi"><br><br>
+
+    <button onclick="kiemTraTuoi()">Kiểm tra</button>
+
+    <p id="result"></p>
+
+    <script>
+        function kiemTraTuoi() {
+            let tuoi = parseInt(document.getElementById("tuoi").value);
+            let ketQua = "";
+
+            if (isNaN(tuoi) || tuoi <= 0) {
+                ketQua = "Vui lòng nhập tuổi hợp lệ.";
+            } else if (tuoi >= 15) {
+                ketQua = `Học sinh ${tuoi} tuổi => ĐỦ điều kiện học lớp 10.`;
+            } else {
+                ketQua = `Học sinh ${tuoi} tuổi => KHÔNG đủ điều kiện học lớp 10.`;
+            }
+
+            document.getElementById("result").innerText = ketQua;
+        }
+    </script>
+</body>
+</html>

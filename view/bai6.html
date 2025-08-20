@@ -1,0 +1,37 @@
+<hr>
+<h2>Bài 6: Tính hoa hồng</h2>
+
+<label>Doanh số (triệu đồng): </label>
+<input type="number" id="doanhso" placeholder="Nhập doanh số"><br><br>
+
+<button onclick="tinhHoaHong()">Tính hoa hồng</button>
+
+<p id="ketqua2"></p>
+
+<script>
+    function tinhHoaHong() {
+        let ds = parseFloat(document.getElementById("doanhso").value);
+
+        if (isNaN(ds) || ds < 0) {
+            document.getElementById("ketqua2").innerText = "Vui lòng nhập doanh số hợp lệ.";
+            return;
+        }
+
+        let tile = 0;
+
+        if (ds < 10) {
+            tile = 0.02;
+        } else if (ds < 20) {
+            tile = 0.05;
+        } else if (ds < 50) {
+            tile = 0.10;
+        } else {
+            tile = 0.15;
+        }
+
+        let hoahong = ds * tile;
+
+        document.getElementById("ketqua2").innerText = 
+            `Hoa hồng: ${hoahong.toFixed(2)} triệu đồng (tỷ lệ ${tile * 100}%)`;
+    }
+</script>

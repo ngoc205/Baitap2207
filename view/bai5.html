@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xếp loại học lực</title>
+</head>
+<body>
+    <h2>Bài 5: Xếp loại học lực</h2>
+
+    <label>Điểm kiểm tra: </label>
+    <input type="number" id="kt" placeholder="0 - 10"><br><br>
+
+    <label>Điểm giữa kỳ: </label>
+    <input type="number" id="gk" placeholder="0 - 10"><br><br>
+
+    <label>Điểm cuối kỳ: </label>
+    <input type="number" id="ck" placeholder="0 - 10"><br><br>
+
+    <button onclick="xepLoai()">Xếp loại</button>
+
+    <p id="ketqua1"></p>
+
+    <script>
+        function xepLoai() {
+            let kt = parseFloat(document.getElementById("kt").value);
+            let gk = parseFloat(document.getElementById("gk").value);
+            let ck = parseFloat(document.getElementById("ck").value);
+
+            if ([kt, gk, ck].some(d => isNaN(d) || d < 0 || d > 10)) {
+                document.getElementById("ketqua1").innerText = "Vui lòng nhập điểm hợp lệ từ 0 đến 10.";
+                return;
+            }
+
+            let dtb = (kt + gk + ck) / 3;
+            let loai = "";
+
+            if (dtb >= 8) {
+                loai = "Giỏi";
+            } else if (dtb >= 6.5) {
+                loai = "Khá";
+            } else if (dtb >= 5) {
+                loai = "Trung bình";
+            } else {
+                loai = "Yếu";
+            }
+
+            document.getElementById("ketqua1").innerText = 
+                `Điểm trung bình: ${dtb.toFixed(2)} => Xếp loại: ${loai}`;
+        }
+    </script>
+</body>
+</html>

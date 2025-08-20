@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính BMI</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tính chỉ số BMI</h2>
+
+    <label for="weight">Cân nặng (kg): </label>
+    <input type="number" id="weight" placeholder="Nhập cân nặng"><br><br>
+
+    <label for="height">Chiều cao (cm): </label>
+    <input type="number" id="height" placeholder="Nhập chiều cao"><br><br>
+
+    <button onclick="tinhBMI()">Tính BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        function tinhBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let heightCm = parseFloat(document.getElementById("height").value);
+
+            if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
+                document.getElementById("result").innerText = "Vui lòng nhập đúng số liệu!";
+                return;
+            }
+
+            let heightM = heightCm / 100;
+            let bmi = weight / (heightM * heightM);
+            let message = "";
+
+            if (bmi < 18.5) {
+                message = "Bạn đang thiếu cân.";
+            } else if (bmi < 24.9) {
+                message = "Bạn có cân nặng bình thường.";
+            } else if (bmi < 29.9) {
+                message = "Bạn đang thừa cân.";
+            } else {
+                message = "Bạn bị béo phì.";
+            }
+
+            document.getElementById("result").innerText = 
+                `Chỉ số BMI của bạn là: ${bmi.toFixed(2)}. ${message}`;
+        }
+    </script>
+</body>
+</html>

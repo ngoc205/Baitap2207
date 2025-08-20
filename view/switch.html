@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Switch Case - Ngày trong tuần</title>
+</head>
+<body>
+    <h2>Chọn số từ 0 đến 6 để xem ngày trong tuần</h2>
+
+    <label for="day">Nhập số (0 - 6): </label>
+    <input type="number" id="day" min="0" max="6" placeholder="Nhập số"><br><br>
+
+    <button onclick="hienThiNgay()">Hiển thị ngày</button>
+
+    <p id="result"></p>
+
+    <script>
+        function hienThiNgay() {
+            let day = parseInt(document.getElementById("day").value);
+            let message = "";
+
+            switch (day) {
+                case 0:
+                    message = "Chủ Nhật";
+                    break;
+                case 1:
+                    message = "Thứ Hai";
+                    break;
+                case 2:
+                    message = "Thứ Ba";
+                    break;
+                case 3:
+                    message = "Thứ Tư";
+                    break;
+                case 4:
+                    message = "Thứ Năm";
+                    break;
+                case 5:
+                    message = "Thứ Sáu";
+                    break;
+                case 6:
+                    message = "Thứ Bảy";
+                    break;
+                default:
+                    message = "Giá trị không hợp lệ. Vui lòng nhập số từ 0 đến 6.";
+            }
+
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</body>
+</html>

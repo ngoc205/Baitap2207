@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính diện tích hình chữ nhật</title>
+</head>
+<body>
+    <script>
+        let a = Number(prompt("Nhập chiều dài hình chữ nhật (a):"));
+        let b = Number(prompt("Nhập chiều rộng hình chữ nhật (b):"));
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            alert("Vui lòng nhập số hợp lệ lớn hơn 0 cho cả a và b.");
+        } else {
+            let dientich = a * b;
+            alert("Diện tích hình chữ nhật là: " + dientich);
+        }
+    </script>
+</body>
+</html>

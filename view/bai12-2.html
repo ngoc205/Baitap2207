@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let P = Number(prompt("Nhập số tiền ban đầu (VND):"));
+let n = Number(prompt("Nhập số tháng gửi:"));
+let r = Number(prompt("Nhập lãi suất hàng tháng (%, vd 1 cho 1%):")) / 100;
+
+let A = P * Math.pow((1+r), n);
+
+alert("Sau " + n + " tháng, số tiền có được là: " + A.toFixed(0) + " VND");
+</script>
+
+</body>
+</html>

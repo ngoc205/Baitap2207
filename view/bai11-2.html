@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let thunhap = Number(prompt("Nhập thu nhập hàng tháng (triệu VND):"));
+let phuthuoc = Number(prompt("Nhập số người phụ thuộc:"));
+
+let giamtru = 11 + phuthuoc*4.4;
+let tnct = thunhap - giamtru; // thu nhập chịu thuế
+let thue = 0;
+
+if (tnct <= 0) {
+    thue = 0;
+} else if (tnct <= 5) {
+    thue = tnct * 0.05;
+} else if (tnct <= 10) {
+    thue = 5*0.05 + (tnct-5)*0.1;
+} else if (tnct <= 18) {
+    thue = 5*0.05 + 5*0.1 + (tnct-10)*0.15;
+} else {
+    thue = 5*0.05 + 5*0.1 + 8*0.15 + (tnct-18)*0.2;
+}
+
+alert("Thu nhập chịu thuế: " + tnct + " triệu\nThuế TNCN phải nộp: " + thue + " triệu");
+</script>
+
+</body>
+</html>

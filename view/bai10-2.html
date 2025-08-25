@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let kwh = Number(prompt("Nhập số kWh tiêu thụ:"));
+let gia;
+
+if (kwh <= 50) {
+    gia = kwh * 1678;
+} else if (kwh <= 100) {
+    gia = 50*1678 + (kwh-50)*1734;
+} else if (kwh <= 200) {
+    gia = 50*1678 + 50*1734 + (kwh-100)*2014;
+} else {
+    gia = 50*1678 + 50*1734 + 100*2014 + (kwh-200)*2536;
+}
+
+alert("Tiền điện phải trả là: " + gia + " VND");
+</script>
+
+</body>
+</html>

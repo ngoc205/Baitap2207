@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính diện tích tam giác vuông</title>
+</head>
+<body>
+    <script>
+        let a = Number(prompt("Nhập cạnh góc vuông a:"));
+        let b = Number(prompt("Nhập cạnh góc vuông b:"));
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            alert("Vui lòng nhập số hợp lệ lớn hơn 0 cho cả a và b.");
+        } else {
+            let dientich = (a * b) / 2;
+            alert("Diện tích tam giác vuông là: " + dientich);
+        }
+    </script>
+</body>
+</html>

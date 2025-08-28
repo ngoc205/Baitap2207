@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 1: Đếm từ 1 đến 100</title>
+</head>
+<body>
+  <h2>Đếm từ 1 đến 100</h2>
+  <div id="output"></div>
+
+  <script>
+    let i = 1;
+    let output = document.getElementById("output");
+
+    let timer = setInterval(function () {
+      output.innerHTML += i + "<br>"; // hiển thị số
+      if (i === 99) {
+        alert("Đã đếm xong rồi!");
+      }
+      if (i === 100) {
+        clearInterval(timer); // dừng lại
+      }
+      i++;
+    }, 100); // 100ms hiện 1 số
+  </script>
+</body>
+</html>

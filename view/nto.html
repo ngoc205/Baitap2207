@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>20 số nguyên tố đầu tiên</title>
+</head>
+<body>
+  <h2>Số nguyên tố là</h2>
+  <script>
+   let numbers = parseInt(prompt("Bạn muốn hiển thị bao nhiêu số nguyên tố?"));
+    let count = 0;     
+    let N = 2;         
+
+    while (count < numbers) {
+      let isPrime = true;
+      for (let i = 2; i <= Math.sqrt(N); i++) {
+        if (N % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      if (isPrime) {
+        document.write(N + " ");
+        count++;
+      }
+
+      N++;
+    }
+  </script>
+</body>
+</html>

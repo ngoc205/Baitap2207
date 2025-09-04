@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3 - Tam giác vuông</title>
+</head>
+<body>
+    <h2>Bài 3: Các tam giác vuông với các góc vuông ở các vị trí khác nhau</h2>
+    <label>Nhập chiều cao tam giác: </label>
+    <input type="number" id="height" min="1">
+    <button onclick="inTamGiac()">In tam giác</button>
+    <pre id="output"></pre>
+
+    <script>
+        function inTamGiac() {
+            let h = parseInt(document.getElementById("height").value);
+            let kq = "";
+
+            if (isNaN(h) || h < 1) {
+                document.getElementById("output").innerText = "Vui lòng nhập số nguyên >= 1";
+                return;
+            }
+
+            // Góc vuông dưới-trái
+            kq += "Góc vuông dưới trái:\n";
+            for (let i = 1; i <= h; i++) {
+                kq += "*".repeat(i) + "\n";
+            }
+
+            // Góc vuông trên trái
+            kq += "\nGóc vuông trên trái:\n";
+            for (let i = h; i >= 1; i--) {
+                kq += "*".repeat(i) + "\n";
+            }
+
+            // Góc vuông dưới phải
+            kq += "\nGóc vuông dưới phải:\n";
+            for (let i = 1; i <= h; i++) {
+                kq += " ".repeat(h - i) + "*".repeat(i) + "\n";
+            }
+
+            // Góc vuông trên phải
+            kq += "\nGóc vuông trên phải:\n";
+            for (let i = h; i >= 1; i--) {
+                kq += " ".repeat(h - i) + "*".repeat(i) + "\n";
+            }
+
+            document.getElementById("output").innerText = kq;
+        }
+    </script>
+</body>
+</html>

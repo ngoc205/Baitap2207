@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 8 - Game đoán số</title>
+</head>
+<body>
+    <h2>Bài 8: Game "Hãy thử xem!"</h2>
+    <button onclick="choiGame()">Chơi</button>
+
+    <script>
+        function choiGame() {
+            let min = parseInt(prompt("Nhập giá trị nhỏ nhất của khoảng:"));
+            let max = parseInt(prompt("Nhập giá trị lớn nhất của khoảng:"));
+
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Khoảng không hợp lệ. Vui lòng thử lại.");
+                return;
+            }
+
+            let soNgauNhien = Math.floor(Math.random() * (max - min + 1)) + min;
+            let soLanThu = 0;
+            const soLanToiDa = 3;
+
+            while (soLanThu < soLanToiDa) {
+                let doan = parseInt(prompt(`Lần ${soLanThu + 1}: Nhập số bạn đoán trong khoảng từ ${min} đến ${max}`));
+
+                if (isNaN(doan)) {
+                    alert("Vui lòng nhập một số hợp lệ!");
+                    continue;
+                }
+
+                soLanThu++;
+
+                if (doan === soNgauNhien) {
+                    alert("🎉 Chúc mừng! Bạn đã đoán đúng số!");
+                    return;
+                } else if (doan < soNgauNhien) {
+                    alert("Số bạn đoán nhỏ hơn.");
+                } else {
+                    alert("Số bạn đoán lớn hơn.");
+                }
+            }
+
+            alert(`Bạn đã hết lượt đoán. Số đúng là: ${soNgauNhien}`);
+        }
+    </script>
+</body>
+</html>

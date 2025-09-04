@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4 - In hình chữ nhật</title>
+</head>
+<body>
+    <h2>Bài 4: In hình chữ nhật bằng dấu *</h2>
+    <label>Chiều rộng: </label>
+    <input type="number" id="width" min="1">
+    <label>Chiều cao: </label>
+    <input type="number" id="height" min="1">
+    <button onclick="inHinhChuNhat()">In</button>
+    <pre id="output"></pre>
+
+    <script>
+        function inHinhChuNhat() {
+            let w = parseInt(document.getElementById("width").value);
+            let h = parseInt(document.getElementById("height").value);
+            let result = "";
+
+            if (isNaN(w) || isNaN(h) || w < 1 || h < 1) {
+                document.getElementById("output").innerText = "Vui lòng nhập chiều rộng và chiều cao >= 1";
+                return;
+            }
+
+            for (let i = 0; i < h; i++) {
+                result += "*".repeat(w) + "\n";
+            }
+
+            document.getElementById("output").innerText = result;
+        }
+    </script>
+</body>
+</html>

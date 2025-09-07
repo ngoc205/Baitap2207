@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập mảng JavaScript</title>
+</head>
+<body>
+  <h1>Bài tập Mảng trong JavaScript</h1>
+
+  <div id="bai1" class="result"></div>
+  <div id="bai2" class="result"></div>
+  <div id="bai3" class="result"></div>
+  <div id="bai4" class="result"></div>
+  <div id="bai5" class="result"></div>
+  <div id="bai6" class="result"></div>
+  <div id="bai7" class="result"></div>
+  <div id="bai8" class="result"></div>
+
+  <script>
+    let arr1 = [3, 12, 5, 18, 7, 20, 9, 15, 1, 10];
+    let result1 = arr1.filter(num => num >= 10);
+    document.getElementById("bai1").innerHTML =
+      "<h2>Bài 1</h2>" +
+      "Mảng ban đầu: " + arr1 + "<br>" +
+      "Các số >= 10: " + result1;
+
+    let arr2 = [11, 7, 25, 30, 6, 18, 50, 9, 12, 1];
+    let maxVal = Math.max(...arr2);
+    let position = arr2.indexOf(maxVal);
+    document.getElementById("bai2").innerHTML =
+      "<h2>Bài 2</h2>" +
+      "Mảng ban đầu: " + arr2 + "<br>" +
+      "Giá trị lớn nhất: " + maxVal + "<br>" +
+      "Vị trí: " + position;
+
+    let arr3 = [4, 8, 15, 16, 23, 42];
+    let max3 = Math.max(...arr3);
+    let avg3 = arr3.reduce((sum, num) => sum + num, 0) / arr3.length;
+    document.getElementById("bai3").innerHTML =
+      "<h2>Bài 3</h2>" +
+      "Mảng ban đầu: " + arr3 + "<br>" +
+      "Giá trị lớn nhất: " + max3 + "<br>" +
+      "Giá trị trung bình: " + avg3;
+
+
+    let arr4 = [1, 2, 3, 4, 5];
+    let reversedArr = [...arr4].reverse();
+    document.getElementById("bai4").innerHTML =
+      "<h2>Bài 4</h2>" +
+      "Mảng ban đầu: " + arr4 + "<br>" +
+      "Mảng sau khi đảo ngược: " + reversedArr;
+
+    let arr5 = [3, -7, 0, -2, 9, -10, 15];
+    let negativeCount = arr5.filter(num => num < 0).length;
+    document.getElementById("bai5").innerHTML =
+      "<h2>Bài 5</h2>" +
+      "Mảng ban đầu: " + arr5 + "<br>" +
+      "Số lượng số âm: " + negativeCount;
+
+    let arr6 = [3, 8, 15, 20, 7, 12, 19, 2, 10, 25];
+    let V = 12;
+    let message6 = arr6.includes(V) ? "V is in the array" : "V is not in the array";
+    document.getElementById("bai6").innerHTML =
+      "<h2>Bài 6</h2>" +
+      "Mảng ban đầu: " + arr6 + "<br>" +
+      "Số cần tìm: " + V + "<br>" +
+      message6;
+
+    let arr7 = [5, 12, 7, 19, 25, 8, 15, 10, 30, 2];
+    let V7 = 19;
+    let index7 = arr7.indexOf(V7);
+
+    if (index7 !== -1) {
+      arr7.splice(index7, 1); // Xóa V
+      arr7.push(0); // Thêm số 0 vào cuối
+    }
+
+    let message7 = (index7 !== -1)
+      ? "Đã xóa " + V7 + " khỏi mảng."
+      : "Không tìm thấy " + V7 + " trong mảng.";
+
+    document.getElementById("bai7").innerHTML =
+      "<h2>Bài 7</h2>" +
+      "Mảng ban đầu: [5, 12, 7, 19, 25, 8, 15, 10, 30, 2]<br>" +
+      "Mảng sau khi xử lý: " + arr7 + "<br>" +
+      message7;
+
+    let arr8 = [3, 15, 7, 25, 12, 30, 10];
+    let sortedArr = [...arr8].sort((a, b) => b - a);
+    document.getElementById("bai8").innerHTML =
+      "<h2>Bài 8</h2>" +
+      "Mảng ban đầu: " + arr8 + "<br>" +
+      "Mảng sau khi sắp xếp giảm dần: " + sortedArr;
+  </script>
+</body>
+</html>

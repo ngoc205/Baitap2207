@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Từ điển đơn giản</title>
+</head>
+<body>
+  <h2>Từ điển Anh - Việt</h2>
+
+  <input type="text" id="wordInput" placeholder="Nhập từ tiếng Anh">
+  <button onclick="translateWord()">Tra từ</button>
+
+  <p id="result"></p>
+
+  <script>
+    // Danh sách từ vựng
+    let dictionary = {
+      "hello": "xin chào",
+      "book": "quyển sách",
+      "cat": "con mèo",
+      "dog": "con chó",
+      "apple": "quả táo",
+      "computer": "máy tính"
+    };
+
+    function translateWord() {
+      let input = document.getElementById("wordInput").value.toLowerCase();
+      let result = document.getElementById("result");
+
+      if (dictionary[input]) {
+        result.textContent = "Nghĩa tiếng Việt: " + dictionary[input];
+      } else {
+        result.textContent = " Không tìm thấy từ này!";
+      }
+    }
+  </script>
+</body>
+</html>

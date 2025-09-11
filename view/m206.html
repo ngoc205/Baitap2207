@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 6 - Thay thế ký tự</title>
+</head>
+<body>
+  <h3>Bài 6: Thay ký tự '-' thành '_'</h3>
+  <script>
+    let arr = ['a', '-', 'b', '-', 'c', '-', 'd'];
+
+    document.write("Mảng ban đầu: " + arr.join(", ") + "<br>");
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === '-') {
+        arr[i] = '_';
+      }
+    }
+
+    document.write("Mảng sau khi thay thế: " + arr.join(", "));
+  </script>
+</body>
+</html>

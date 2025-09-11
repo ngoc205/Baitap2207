@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 3 - Đếm ký tự số</title>
+</head>
+<body>
+  <h3>Bài 3: Đếm ký tự số trong mảng</h3>
+  <script>
+    let arr = ['a', '5', 'b', '7', 'c', '9', 'x', '0'];
+
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (!isNaN(arr[i]) && arr[i] !== ' ') {
+        count++;
+      }
+    }
+
+    document.write("Mảng: " + arr.join(", ") + "<br>");
+    document.write("Số ký tự là số: " + count);
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 4 - Đếm số từ</title>
+</head>
+<body>
+  <h3>Bài 4: Đếm số từ trong chuỗi</h3>
+  <script>
+    let str = prompt("Nhập vào một chuỗi:"); // Ví dụ: "Xin chào các bạn"
+
+    // Tách từ dựa trên khoảng trắng
+    let words = str.trim().split(/\s+/);
+
+    document.write("Chuỗi vừa nhập: " + str + "<br>");
+    document.write("Số từ trong chuỗi: " + words.length);
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 9 - Nối hai mảng</title>
+</head>
+<body>
+  <h2>Bài 9: Nối hai mảng số nguyên</h2>
+  <p>Nhập 10 số cho mảng A và 10 số cho mảng B, chương trình sẽ nối lại thành mảng C.</p>
+  
+  <script>
+    // Khai báo 2 mảng a và b
+    let a = [];
+    let b = [];
+
+    // Nhập dữ liệu cho mảng a
+    alert("Nhập 10 phần tử cho mảng A:");
+    for (let i = 0; i < 10; i++) {
+      let value = parseInt(prompt(`Nhập a[${i}] = `));
+      a.push(value);
+    }
+
+    // Nhập dữ liệu cho mảng b
+    alert("Nhập 10 phần tử cho mảng B:");
+    for (let i = 0; i < 10; i++) {
+      let value = parseInt(prompt(`Nhập b[${i}] = `));
+      b.push(value);
+    }
+
+    // Nối mảng b và a vào mảng c
+    let c = b.concat(a);
+
+    // Hiển thị kết quả
+    document.write("<strong>Mảng A:</strong> " + a.join(", ") + "<br>");
+    document.write("<strong>Mảng B:</strong> " + b.join(", ") + "<br>");
+    document.write("<strong>Mảng C (B nối A):</strong> " + c.join(", "));
+  </script>
+</body>
+</html>

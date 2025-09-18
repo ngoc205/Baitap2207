@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 2 - Hình tròn</title>
+</head>
+<body>
+  <h2>Bài 2: Tính diện tích và chu vi hình tròn</h2>
+  <input type="number" id="radius" placeholder="Nhập bán kính hình tròn">
+  <button onclick="calculateCircle()">Tính</button>
+  <p id="result"></p>
+
+  <script>
+    const PI = Math.PI;
+
+    function areaCircle(r) {
+      return PI * r * r;
+    }
+
+    function perimeterCircle(r) {
+      return 2 * PI * r;
+    }
+
+    function calculateCircle() {
+      let r = parseFloat(document.getElementById("radius").value);
+      if (isNaN(r) || r <= 0) {
+        document.getElementById("result").innerText = "Bán kính phải lớn hơn 0!";
+      } else {
+        document.getElementById("result").innerText = 
+          "Diện tích: " + areaCircle(r).toFixed(2) +
+          " | Chu vi: " + perimeterCircle(r).toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 3 - Tính giai thừa</title>
+</head>
+<body>
+  <h2>Bài 3: Tính giai thừa</h2>
+  <input type="number" id="number" placeholder="Nhập số nguyên">
+  <button onclick="calculateFactorial()">Tính</button>
+  <p id="result"></p>
+
+  <script>
+    function factorial(n) {
+      if (n < 0) return null; 
+      let result = 1;
+      for (let i = 1; i <= n; i++) {
+        result *= i;
+      }
+      return result;
+    }
+
+    function calculateFactorial() {
+      let num = parseInt(document.getElementById("number").value);
+      if (isNaN(num) || num < 0) {
+        document.getElementById("result").innerText = "Vui lòng nhập số nguyên không âm!";
+      } else {
+        document.getElementById("result").innerText = num + "! = " + factorial(num);
+      }
+    }
+  </script>
+</body>
+</html>

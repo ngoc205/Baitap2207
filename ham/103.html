@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 3 - So sánh hai số</title>
+</head>
+<body>
+  <h2>Bài 3: So sánh hai số</h2>
+  <p>Nhập số thứ nhất:</p>
+  <input type="number" id="num1">
+  <p>Nhập số thứ hai:</p>
+  <input type="number" id="num2">
+  <br><br>
+  <button onclick="compareNumbers()">Thực hiện</button>
+
+  <h3>Kết quả:</h3>
+  <p id="result"></p>
+
+  <script>
+    function compare(a, b) {
+      if (a > b) {
+        alert("Số thứ nhất lớn hơn số thứ hai!");
+      } else {
+        return a + b;
+      }
+    }
+
+    function compareNumbers() {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById("result").innerText = "Vui lòng nhập cả hai số!";
+        return;
+      }
+
+      let result = compare(a, b);
+      if (result !== undefined) {
+        document.getElementById("result").innerText = "Tổng của hai số là: " + result;
+      }
+    }
+  </script>
+</body>
+</html>

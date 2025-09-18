@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 8 - Đảo ngược mảng</title>
+</head>
+<body>
+  <h2>Bài 8: Đảo ngược mảng</h2>
+  <p>Nhập mảng số, cách nhau bằng dấu phẩy. Ví dụ: 1,2,3,4,5</p>
+  <input type="text" id="arrayInput" placeholder="Nhập mảng">
+  <button onclick="reverseArray()">Đảo ngược</button>
+  <p id="result"></p>
+
+  <script>
+    function reverseArray() {
+      let arr = document.getElementById("arrayInput").value.split(",").map(Number);
+      let reversed = arr.reverse();
+      document.getElementById("result").innerText = "Mảng sau khi đảo ngược: " + reversed.join(", ");
+    }
+  </script>
+</body>
+</html>

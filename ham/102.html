@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 2 - Tăng giá trị lên 1</title>
+</head>
+<body>
+  <h2>Bài 2: Hàm tăng giá trị lên 1</h2>
+  <p>Nhập số bất kỳ:</p>
+  <input type="number" id="numberInput">
+  <button onclick="increaseNumber()">Tăng giá trị</button>
+
+  <h3>Kết quả:</h3>
+  <p id="result"></p>
+
+  <script>
+    function increase(num) {
+      return num + 1;
+    }
+
+    function increaseNumber() {
+      let value = parseInt(document.getElementById("numberInput").value);
+      if (isNaN(value)) {
+        document.getElementById("result").innerText = "Vui lòng nhập số hợp lệ!";
+      } else {
+        let result = increase(value);
+        document.getElementById("result").innerText = "Giá trị sau khi tăng: " + result;
+      }
+    }
+  </script>
+</body>
+</html>

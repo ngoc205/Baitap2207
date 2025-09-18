@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 9 - Kiểm tra ký tự</title>
+</head>
+<body>
+  <h2>Bài 9: Kiểm tra ký tự trong mảng</h2>
+  <p>Nhập mảng ký tự, cách nhau bằng dấu phẩy. Ví dụ: a,b,c,a,d</p>
+  <input type="text" id="arrayInput" placeholder="Nhập mảng ký tự">
+  <p>Nhập ký tự cần kiểm tra:</p>
+  <input type="text" id="charInput" maxlength="1" placeholder="Nhập 1 ký tự">
+  <button onclick="checkCharacter()">Kiểm tra</button>
+  <p id="result"></p>
+
+  <script>
+    function checkCharacter() {
+      let arr = document.getElementById("arrayInput").value.split(",");
+      let char = document.getElementById("charInput").value;
+
+      let count = arr.filter(c => c === char).length;
+
+      if (count > 0) {
+        document.getElementById("result").innerText = 
+          "Ký tự '" + char + "' xuất hiện " + count + " lần trong mảng.";
+      } else {
+        document.getElementById("result").innerText = "-1 (Không tìm thấy ký tự)";
+      }
+    }
+  </script>
+</body>
+</html>

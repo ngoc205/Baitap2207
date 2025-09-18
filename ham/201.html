@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 1 - Tính bình phương</title>
+</head>
+<body>
+  <h2>Bài 1: Tính bình phương</h2>
+  <input type="number" id="num" placeholder="Nhập số bất kỳ">
+  <button onclick="calculateSquare()">Tính</button>
+  <p id="result"></p>
+
+  <script>
+    function square(n) {
+      return n * n;
+    }
+
+    function calculateSquare() {
+      let value = parseFloat(document.getElementById("num").value);
+      if (isNaN(value)) {
+        document.getElementById("result").innerText = "Vui lòng nhập số hợp lệ!";
+      } else {
+        document.getElementById("result").innerText = 
+          "Bình phương của " + value + " là: " + square(value);
+      }
+    }
+  </script>
+</body>
+</html>

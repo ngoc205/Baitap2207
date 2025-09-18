@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 6 - Kiểm tra số nguyên dương</title>
+</head>
+<body>
+  <h2>Bài 6: Kiểm tra số nguyên dương</h2>
+  <input type="number" id="num" placeholder="Nhập số">
+  <button onclick="checkPositive()">Kiểm tra</button>
+  <p id="result"></p>
+
+  <script>
+    function isPositiveInteger(num) {
+      return Number.isInteger(num) && num > 0;
+    }
+
+    function checkPositive() {
+      let value = parseFloat(document.getElementById("num").value);
+      if (isPositiveInteger(value)) {
+        document.getElementById("result").innerText = value + " là số nguyên dương.";
+      } else {
+        document.getElementById("result").innerText = value + " không phải là số nguyên dương.";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 4 - Kiểm tra ký tự số</title>
+</head>
+<body>
+  <h2>Bài 4: Kiểm tra ký tự số</h2>
+  <input type="text" id="char" maxlength="1" placeholder="Nhập 1 ký tự">
+  <button onclick="checkCharacter()">Kiểm tra</button>
+  <p id="result"></p>
+
+  <script>
+    function isDigit(char) {
+      return !isNaN(char) && char.trim() !== "";
+    }
+
+    function checkCharacter() {
+      let char = document.getElementById("char").value;
+      if (isDigit(char)) {
+        document.getElementById("result").innerText = char + " là ký tự số.";
+      } else {
+        document.getElementById("result").innerText = char + " không phải là ký tự số.";
+      }
+    }
+  </script>
+</body>
+</html>

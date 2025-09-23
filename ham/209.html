@@ -12,14 +12,11 @@
   <input type="text" id="charInput" maxlength="1" placeholder="Nhập 1 ký tự">
   <button onclick="checkCharacter()">Kiểm tra</button>
   <p id="result"></p>
-
   <script>
     function checkCharacter() {
       let arr = document.getElementById("arrayInput").value.split(",");
       let char = document.getElementById("charInput").value;
-
       let count = arr.filter(c => c === char).length;
-
       if (count > 0) {
         document.getElementById("result").innerText = 
           "Ký tự '" + char + "' xuất hiện " + count + " lần trong mảng.";

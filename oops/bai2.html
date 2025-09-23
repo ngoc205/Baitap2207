@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập OOP - Temperature</title>
+</head>
+<body>
+  <h1>Chuyển đổi nhiệt độ</h1>
+  <div class="result">
+    <p id="celsius"></p>
+    <p id="fahrenheit"></p>
+    <p id="kelvin"></p>
+  </div>
+
+  <script>
+    class Temperature {
+      constructor(celsius) {
+        if (celsius < -273) {
+          throw new Error("Nhiệt độ không thể nhỏ hơn -273°C (độ tuyệt đối).");
+        }
+        this.celsius = celsius;
+      }
+      toFahrenheit() {
+        return this.celsius * 9/5 + 32;
+      }
+      toKelvin() {
+        return this.celsius + 273.15;
+      }
+    }
+    try {
+      let temp = new Temperature(25);
+      document.getElementById("celsius").innerText = `Nhiệt độ hiện tại: ${temp.celsius}°C`;
+      document.getElementById("fahrenheit").innerText = `Đổi sang Fahrenheit: ${temp.toFahrenheit().toFixed(2)}°F`;
+      document.getElementById("kelvin").innerText = `Đổi sang Kelvin: ${temp.toKelvin().toFixed(2)}K`;
+    } catch (error) {
+      alert(error.message);
+    }
+  </script>
+</body>
+</html>

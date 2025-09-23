@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập OOP - Hình chữ nhật</title>
+</head>
+<body>
+  <h1>Hình chữ nhật với OOP trong JavaScript</h1>
+  <canvas id="myCanvas" width="400" height="300"></canvas>
+
+  <div class="info">
+    <p id="area"></p>
+    <p id="perimeter"></p>
+  </div>
+
+  <script>
+    class Rectangle {
+      constructor(length, width) {
+        this.length = length; 
+        this.width = width; 
+      }
+      getArea() {
+        return this.length * this.width;
+      }
+      getPerimeter() {
+        return 2 * (this.length + this.width);
+      }
+      draw(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#4CAF50"; 
+        ctx.fillRect(50, 50, this.length, this.width); 
+      }
+      resize(newLength, newWidth) {
+        this.length = newLength;
+        this.width = newWidth;
+      }
+    }
+    let myRectangle = new Rectangle(150, 100);
+    myRectangle.draw("myCanvas");
+
+    document.getElementById("area").innerText = "Diện tích: " + myRectangle.getArea();
+    document.getElementById("perimeter").innerText = "Chu vi: " + myRectangle.getPerimeter();
+
+    setTimeout(() => {
+      myRectangle.resize(200, 120);
+      myRectangle.draw("myCanvas");
+
+      document.getElementById("area").innerText = "Diện tích mới: " + myRectangle.getArea();
+      document.getElementById("perimeter").innerText = "Chu vi mới: " + myRectangle.getPerimeter();
+    }, 3000); 
+  </script>
+</body>
+</html>

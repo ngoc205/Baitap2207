@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Sách</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <h2>Quản lý Sách</h2>
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Năm xuất bản</th>
+        <th>Số quyển</th>
+        <th>Tình trạng</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="button-container">
+    <button id="btnAddNew">Thêm sách mới</button>
+    <button id="btnAddExist">Thêm sách đã có</button>
+    <button id="btnMuon">Mượn sách</button>
+    <button id="btnMax">Hiển thị sách nhiều nhất</button>
+  </div>
+  <script>
+    class Sach {
+      constructor(maSach, tenSach, namXuatBan, soQuyen) {
+        this.maSach = maSach;
+        this.tenSach = tenSach;
+        this.namXuatBan = namXuatBan;
+        this.soQuyen = soQuyen;
+        this.tinhTrang = soQuyen > 0;
+      }
+    }
+    let danhSachSach = [];
+    function hienThiSach(arr = danhSachSach) {
+      const tbody = document.querySelector('#bookTable tbody');
+      tbody.innerHTML = '';
+      arr.forEach(sach => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${sach.maSach}</td>
+          <td>${sach.tenSach}</td>
+          <td>${sach.namXuatBan}</td>
+          <td>${sach.soQuyen}</td>
+          <td>${sach.tinhTrang ? 'Còn sách' : 'Hết sách'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    function validateSach(maSach, tenSach, namXuatBan, soQuyen) {
+      const maSachRegex = /^[1-5][0-9]{4}$/;
+      if (!maSachRegex.test(maSach)) { alert('Mã sách phải gồm 5 ký tự: ký tự đầu 1-5, 4 ký tự sau 0-9'); return false; }
+      if (!tenSach.trim()) { alert('Tên sách không được để trống'); return false; }
+      if (!/^\d{4}$/.test(namXuatBan)) { alert('Năm xuất bản phải gồm 4 chữ số'); return false; }
+      if (isNaN(soQuyen) || soQuyen < 0) { alert('Số quyển phải là số >= 0'); return false; }
+      return true;
+    }
+    document.getElementById('btnAddNew').addEventListener('click', () => {
+      let maSach, tenSach, namXuatBan, soQuyen;
+      do {
+        maSach = prompt('Nhập mã sách (5 ký tự, ký tự đầu 1-5, 4 ký tự 0-9):');
+        tenSach = prompt('Nhập tên sách:');
+        namXuatBan = prompt('Nhập năm xuất bản (4 số):');
+        soQuyen = Number(prompt('Nhập số quyển:'));
+      } while (!validateSach(maSach, tenSach, namXuatBan, soQuyen));
+      
+      if (danhSachSach.some(s => s.maSach === maSach)) {
+        alert('Mã sách đã tồn tại! Vui lòng dùng "Thêm sách đã có".');
+        return;
+      }
+
+      danhSachSach.push(new Sach(maSach, tenSach, namXuatBan, soQuyen));
+      hienThiSach();
+      alert('Thêm sách mới thành công!');
+    });
+    document.getElementById('btnAddExist').addEventListener('click', () => {
+      const maSach = prompt('Nhập mã sách đã có:');
+      const sach = danhSachSach.find(s => s.maSach === maSach);
+      if (!sach) { alert('Không tìm thấy sách!'); return; }
+
+      let themSoQuyen;
+      do { themSoQuyen = Number(prompt('Nhập số quyển muốn thêm:')); }
+      while (isNaN(themSoQuyen) || themSoQuyen <= 0);
+
+      sach.soQuyen += themSoQuyen;
+      sach.tinhTrang = sach.soQuyen > 0;
+      hienThiSach();
+      alert('Thêm sách đã có thành công!');
+    });
+    document.getElementById('btnMuon').addEventListener('click', () => {
+      const maSach = prompt('Nhập mã sách muốn mượn:');
+      const sach = danhSachSach.find(s => s.maSach === maSach);
+      if (!sach) { alert('Không tìm thấy sách!'); return; }
+      if (!sach.tinhTrang) { alert('Sách đã hết!'); return; }
+
+      let muonSo;
+      do { muonSo = Number(prompt('Nhập số quyển muốn mượn:')); }
+      while (isNaN(muonSo) || muonSo <= 0 || muonSo > sach.soQuyen);
+
+      sach.soQuyen -= muonSo;
+      sach.tinhTrang = sach.soQuyen > 0;
+      hienThiSach();
+      alert('Mượn sách thành công!');
+    });
+    document.getElementById('btnMax').addEventListener('click', () => {
+      if (danhSachSach.length === 0) { alert('Danh sách trống!'); return; }
+      let maxSoQuyen = Math.max(...danhSachSach.map(s => s.soQuyen));
+      const maxSach = danhSachSach.filter(s => s.soQuyen === maxSoQuyen);
+      let thongBao = 'Sách có số quyển nhiều nhất:\n';
+      maxSach.forEach(s => {
+        thongBao += `Mã sách: ${s.maSach}, Tên: ${s.tenSach}, Năm XB: ${s.namXuatBan}, Số quyển: ${s.soQuyen}\n`;
+      });
+      alert(thongBao);
+      hienThiSach();
+    });
+    danhSachSach.push(new Sach('10001', 'JavaScript Cơ bản', '2022', 5));
+    danhSachSach.push(new Sach('20002', 'HTML & CSS', '2021', 3));
+    hienThiSach();
+  </script>
+</body>
+</html>

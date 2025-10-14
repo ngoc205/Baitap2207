@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAI THI</title>
+</head>
+<body>
+   <div>
+       <h2>Câu 1: Trung bình cộng số lẻ ở vị trí chẵn</h2>
+    <label for="arrayInput">Nhập các số nguyên cách nhau bằng dấu phẩy:</label><br>
+    <input type="text" id="arrayInput" placeholder="Ví dụ: 1,2,3,4,6,7"><br>
+    <button onclick="cau1()">Tính trung bình</button>
+    <div id="cau1Result"></div>
+    </div>
+
+    <script>
+        function cau1() {
+            const input = document.getElementById("arrayInput").value.trim();
+            if (!input) {
+                alert("Vui lòng nhập các số!");
+                return;
+            }
+
+            const arr = input.split(',').map(num => parseInt(num.trim()));
+            if (arr.some(isNaN)) {
+                alert("Vui lòng chỉ nhập số nguyên hợp lệ!");
+                return;
+            }
+
+            if (arr.length === 0 || arr.length > 50) {
+                alert("Số lượng phần tử phải từ 1 đến 50!");
+                return;
+            }
+
+            let sum = 0, count = 0;
+            for (let i = 0; i < arr.length; i += 2) {
+                if (arr[i] % 2 !== 0) {
+                    sum += arr[i];
+                    count++;
+                }
+            }
+
+            const avg = count > 0 ? (sum / count) : 0;
+
+            document.getElementById("cau1Result").innerText =
+                "Mảng đã nhập: [" + arr.join(", ") + "]\nTrung bình các số lẻ ở vị trí chẵn: " + avg;
+        }
+    </script>
+</body>
+</html>

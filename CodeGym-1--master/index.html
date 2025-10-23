@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý đơn hàng vận chuyển</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1> Quản lý đơn hàng vận chuyển</h1>
+
+    <!-- Form nhập đơn -->
+    <form id="orderForm" class="order-form">
+      <input type="text" id="orderId" placeholder="Mã đơn">
+      <input type="text" id="customerName" placeholder="Tên khách">
+      <input type="text" id="address" placeholder="Địa chỉ">
+      <select id="status">
+        <option value="Đang giao">Đang giao</option>
+        <option value="Hoàn thành">Hoàn thành</option>
+        <option value="Đã hủy">Đã hủy</option>
+      </select>
+      <button type="submit">Thêm</button>
+    </form>
+
+    <!-- Tìm kiếm -->
+    <input type="text" id="searchBox" placeholder=" Tìm theo mã đơn hoặc tên khách">
+
+    <!-- Bảng hiển thị -->
+    <table>
+      <thead>
+        <tr>
+          <th>Mã đơn</th>
+          <th>Tên khách</th>
+          <th>Địa chỉ</th>
+          <th>Trạng thái</th>
+          <th>Ngày tạo</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="orderTable"></tbody>
+    </table>
+
+    <!-- Nút mở thống kê -->
+    <button id="openStats" class="stat-btn">Xem thống kê</button>
+  </div>
+
+  <!-- Modal thống kê -->
+  <div id="statsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2> Thống kê đơn hàng</h2>
+      <canvas id="statsChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
